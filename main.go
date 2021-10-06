@@ -15,8 +15,8 @@ import (
 )
 
 const (
-	TEMP_DIR_PREFIX  = "docker-*"
-	REGISTRY_ADDRESS = "https://registry.hub.docker.com"
+	TempDirPrefix   = "docker-*"
+	RegistryAddress = "https://registry.hub.docker.com"
 )
 
 func checkArgs(args []string) {
@@ -47,18 +47,18 @@ func main() {
 	util.CheckError(err)
 
 	manifest, err := api.PullManifest(&types.ManifestConfig{
-		RegistryAddress: REGISTRY_ADDRESS,
+		RegistryAddress: RegistryAddress,
 		ImageName:       imageName,
 		ImageReference:  imageTag,
 	}, auth, client)
 	util.CheckError(err)
 
-	tempDir, err := ioutil.TempDir("", TEMP_DIR_PREFIX)
+	tempDir, err := ioutil.TempDir("", TempDirPrefix)
 	util.CheckError(err)
 
 	for _, layer := range manifest.FsLayers {
 		layerResponse, err := api.PullLayer(&types.LayerConfig{
-			RegistryAddress: REGISTRY_ADDRESS,
+			RegistryAddress: RegistryAddress,
 			ImageName:       imageName,
 			Digest:          layer.BlobSum,
 		}, auth, client)

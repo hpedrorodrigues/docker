@@ -21,7 +21,11 @@ func PullManifest(config *types.ManifestConfig, auth *types.RegistryAuthResponse
 	if err != nil {
 		return nil, err
 	}
-	defer res.Body.Close()
+	defer func() {
+		if err := res.Body.Close(); err != nil {
+			fmt.Println(err)
+		}
+	}()
 
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {

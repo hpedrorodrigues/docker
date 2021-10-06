@@ -20,7 +20,11 @@ func PullLayer(config *types.LayerConfig, auth *types.RegistryAuthResponse, clie
 	if err != nil {
 		return nil, err
 	}
-	defer res.Body.Close()
+	defer func() {
+		if err := res.Body.Close(); err != nil {
+			fmt.Println(err)
+		}
+	}()
 
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
