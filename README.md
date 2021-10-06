@@ -8,8 +8,8 @@ During this process, it uses [chroot](https://en.wikipedia.org/wiki/Chroot),
 [kernel namespaces](https://en.wikipedia.org/wiki/Linux_namespaces) and the
 [Docker registry API](https://docs.docker.com/registry/spec/api/).
 
-This project was inspired by
-[challenge](https://codecrafters.io/challenges/docker) of CodeCrafters.
+This project was inspired by the
+[Docker challenge](https://codecrafters.io/challenges/docker) of CodeCrafters.
 
 And based on Docker registry API docs:
 - [Token Authentication](https://docs.docker.com/registry/spec/auth/token/)
