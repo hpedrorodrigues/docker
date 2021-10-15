@@ -1,4 +1,4 @@
-# Tiny Docker implementation
+# Tiny "docker run" implementation
 
 An extremely simple implementation of "docker run" command to help me learn more
 about docker internals.
